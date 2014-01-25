@@ -4,5 +4,49 @@
     <string name="app_name">RaveApp</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="image_description">Image Description</string>
 
+    <!--actionbar items-->
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+
+    <!-- title names -->
+    <string name="title_activity_plantrip">Plan Trip</string>
+    <string name="title_activity_search_stage">SearchStage</string>
+    <string name="title_activity_view_stats">ViewStats</string>
+
+    <!-- User::Home page -->
+    <string name="plan_trip_BTN">My Plan</string>
+
+    <sting name="view_stats_BTN">View Stats</sting>
+    <sting name="search_BTN">Search</sting>
+    <sting name="gumzo_BTN">Gumzo</sting>
+
+    <string name="driver_login_link">Click Here</string>
+    <string name="driver_txt">Are you a driver?</string>
+
+    <!-- add trip activity -->
+    <string name="route_lbl">Route number</string>
+    <string name="stage_lbl">Stage</string>
+    <string name="stage_lbl_hint">RaceCourse</string>
+    <string name="time_lbl">Departing at</string>
+    <string name="route_lbl_hint">Route 111</string>
+    <string name="remind_me_lbl">Remind me in</string>
+    <string name="subimt_trip">Ok.Lets go!</string>
+
+    <!--nav drawer-->
+    <string name="drawer_plan_trip">Plan trip</string>
+    <string name="view_trip">View a trip</string>
+
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="title_activity_rave_app">RaveApp</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_example">Example action</string>
+    
 </resources>

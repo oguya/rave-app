@@ -1,7 +1,137 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.droid.raveapp.MainActivity"
-    tools:ignore="MergeRootFrame" />
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.droid.raveapp.ui.MainActivity"
+    tools:ignore="MergeRootFrame">
+
+    <!--footer section-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/footer">
+        <TextView
+            android:text="@string/driver_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:paddingLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/driver_login_link"
+            android:textColor="#0b84aa"
+            android:clickable="true"/>
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_alignParentTop="true"
+        android:stretchColumns="1,2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/footer">
+
+        <TableRow
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:layout_column="1"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:onClick="onClick"
+                    android:id="@+id/plan_trip_BTN"
+                    android:src="@drawable/device_access_data_usage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_below="@+id/plan_trip_BTN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/plan_trip_BTN"
+                    android:gravity="center"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_column="2"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:onClick="onClick"
+                    android:contentDescription="@string/image_description"
+                    android:id="@+id/view_stats"
+                    android:src="@drawable/device_access_network_cell"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_below="@+id/view_stats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View Stats"
+                    android:gravity="center"/>
+            </RelativeLayout>
+        </TableRow>
+
+        <TableRow
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <RelativeLayout
+                android:layout_column="1"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:onClick="onClick"
+                    android:id="@+id/search_BTN"
+                    android:src="@drawable/action_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_below="@+id/search_BTN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="search"
+                    android:gravity="center"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_column="2"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:onClick="onClick"
+                    android:contentDescription="@string/image_description"
+                    android:id="@+id/gumzo_BTN"
+                    android:src="@drawable/social_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:layout_below="@+id/gumzo_BTN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gumzo"
+                    android:gravity="center"/>
+            </RelativeLayout>
+
+        </TableRow>
+
+
+    </TableLayout>
+
+
+</RelativeLayout>
