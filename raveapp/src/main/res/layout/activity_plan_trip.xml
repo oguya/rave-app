@@ -60,7 +60,7 @@
                 android:layout_marginTop="5dip"
                 android:inputType="numberDecimal|text"
                 android:hint="@string/route_lbl_hint"
-                android:singleLine="true" />
+                android:completionThreshold="1"/>
             <!--  Email Label -->
             <TextView
                 android:layout_width="fill_parent"
@@ -75,7 +75,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dip"
-                android:inputType="number|textCapCharacters|textAutoComplete"
+                android:inputType="textAutoComplete"
                 android:layout_marginTop="5dip"
                 android:hint="@string/stage_lbl_hint"
                 android:completionThreshold="1" />
@@ -121,7 +121,7 @@
                 android:text="@string/subimt_trip"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
-                android:onClick="HandleClickEvents"
+                android:onClick="processForm"
                 android:textStyle="bold" />
 
         </LinearLayout>

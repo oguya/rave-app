@@ -62,13 +62,13 @@ public class DBAdapter {
     //get stages given route no
     public List<Stop> getStops(String route_name){
         List<Stop> stopsList = new ArrayList<Stop>();
-        String sql = Queries.GET_SPECIFIC_STAGE+" "+route_name+" )";
+        String sql = Queries.GET_SPECIFIC_STAGE+" '"+route_name+"' )";
         Cursor cursor = db.rawQuery(sql, null);
 
         if(cursor.moveToFirst()){
             do{
                 Stop stop = new Stop();
-
+                stop.set_stop_name(cursor.getString(cursor.getColumnIndex(Stop.KEY_STOP_ID)));
                 stop.set_stop_name(cursor.getString(cursor.getColumnIndex(Stop.KEY_STOP_NAME)));
                 stop.set_stop_lat(cursor.getString(cursor.getColumnIndex(Stop.KEY_STOP_LAT)));
                 stop.set_stop_lon(cursor.getString(cursor.getColumnIndex(Stop.KEY_STOP_LON)));
@@ -114,15 +114,17 @@ public class DBAdapter {
         public static final String GET_SPECIFIC_STAGE =
                 "SELECT stop_times.trip_id AS "+Trip.KEY_TRIP_ID+", "+
                         "stop_times.stop_id AS "+StopTime.KEY_STOP_ID+", "+
+                        "stop_times.stop_sequence AS "+StopTime.KEY_STOP_SEQUENCE+", "+
                         "stops.stop_name AS "+Stop.KEY_STOP_NAME+", "+
                         "stops.stop_desc AS "+Stop.KEY_STOP_DESC+", "+
                         "stops.stop_lat AS "+Stop.KEY_STOP_LAT+", "+
-                        "stops.stop_lon AS "+Stop.KEY_STOP_LON+", "+
-                "FROM stop_times  INNER JOIN stops ON stops.stop_id = stop_times.stop_id" +
+                        "stops.stop_lon AS "+Stop.KEY_STOP_LON+" "+
+                "FROM stop_times  INNER JOIN stops ON stops.stop_id = stop_times.stop_id " +
                 "INNER JOIN trips ON stop_times.trip_id = trips.trip_id " +
-                "WHERE stop_times.trip_id IN " +
+                "WHERE trips.direction_id = 1 AND " +
+                        "stop_times.trip_id IN " +
                         "(SELECT trips.trip_id from routes " +
-                        "INNER JOIN trips on trips.route_id = routes.route_id" +
+                        "INNER JOIN trips on trips.route_id = routes.route_id " +
                         " WHERE route_short_name=";
     }
 }

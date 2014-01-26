@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.droid.raveapp.R;
 import com.droid.raveapp.utils.DBUtils;
@@ -30,6 +31,7 @@ public class MainActivity extends ActionBarActivity {
     private LoadStuff loadStuff;
     private SharedPreferences prefs;
     private String EXTERNAL_DB_DIR = "";
+    private String EXTERNAL_FILES_DIR;
 
 
     @Override
@@ -39,18 +41,16 @@ public class MainActivity extends ActionBarActivity {
 
         LoadStuff loadStuff = new LoadStuff(this);
         prefs = getPreferences(MODE_PRIVATE);
-        prefs.getBoolean(PREF_DB_COPIED, false);
+        boolean dbCopied = prefs.getBoolean(PREF_DB_COPIED, false);
 
         //copy db
-        try{
-            EXTERNAL_DB_DIR = getApplicationInfo().dataDir+ File.pathSeparator;
-        }catch (NullPointerException npe){
-            EXTERNAL_DB_DIR = "/data/data/"+getPackageName()+"/databases/";
-        }
-        String DBPath = getDatabasePath(DB_NAME).getAbsolutePath();
-
-        if(!loadStuff.DBExists(DBPath)){
+        EXTERNAL_FILES_DIR = getFilesDir().getPath();
+        EXTERNAL_DB_DIR = "/data/data/"+getPackageName()+"/databases/";
+        String DBPath = EXTERNAL_DB_DIR+DB_NAME;
+        if(!dbCopied){
+            loadStuff.createDBDir(EXTERNAL_DB_DIR);
             loadStuff.loadDB(DBPath);
+            loadStuff.createDBDir(EXTERNAL_DB_DIR);
             prefs.edit().putBoolean(PREF_DB_COPIED, true).commit();
             Log.i(APP_TAG, "copying db to " + DBPath);
         }else{
@@ -107,15 +107,21 @@ public class MainActivity extends ActionBarActivity {
             return (db.exists() && db.isFile());
         }
 
+        public void createDBDir(String DBDir){
+            new File(DBDir).mkdirs();
+        }
+
+
         public void loadDB(String DBPath){
             DBUtils dbUtils = new DBUtils();
+
             try{
-                dbUtils.copyDB(getBaseContext().getResources().openRawResource(R.raw.gtfs_testing),
-                        new FileOutputStream(DBPath));
+                    dbUtils.copyDB(getBaseContext().getResources().openRawResource(R.raw.gtfs_testing),
+                            new FileOutputStream(DBPath));
+
             }catch (IOException e){
                 Log.e(APP_TAG, "Error while copying DB!\n "+e.getMessage());
             }
-
         }
     }
 

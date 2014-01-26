@@ -24,18 +24,18 @@
         <activity
             android:name="com.droid.raveapp.ui.MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <!-- plan trip -->
         <activity
             android:name="com.droid.raveapp.ui.PlanTrip"
             android:label="@string/title_activity_plantrip" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <!-- view stats -->

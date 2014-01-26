@@ -30,17 +30,16 @@ public class DBUtils {
     }
 
     //prep db folders
-    public boolean prepDBFolder(String DBDir){
+    public boolean prepDBFolder(String DBPath) throws IOException{
         boolean status = false;
-        File db = new File(DBDir);
+        File db = new File(DBPath);
 
-        if(!db.exists() && !db.isDirectory()){
-            db.mkdirs();
+        if(db.createNewFile()){
             status = true;
-            Log.i(APP_TAG, "created DB Dir: "+DBDir);
+            Log.i(APP_TAG, "created DB file: "+DBPath);
         }else{
-            status = true;
-            Log.i(APP_TAG, "DB Dir: "+DBDir+" exist!");
+            status = false;
+            Log.i(APP_TAG, "DB Dir: "+DBPath+" exist!");
         }
         return status;
     }

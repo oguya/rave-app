@@ -12,14 +12,13 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Route 111"
         android:id="@+id/route_nameTXT"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/imageView" />
+        android:layout_alignParentTop="true"/>
 
     <TextView
         android:id="@+id/route_descTXT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
+        android:paddingTop="30dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Railways-Ngong Road-Karen-Ngong"
         android:layout_alignParentBottom="true"/>
